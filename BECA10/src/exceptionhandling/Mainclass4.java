@@ -22,13 +22,17 @@ public class Mainclass4
     	System.out.println("Handled Exception");
     	ref.printStackTrace();
       }
+      finally
+      {
+    	System.out.println("finally block executed");
+      }
       
       System.out.println("test() ends...");
     }
 	public static void main(String[] args) 
 	{
       System.out.println("main() starts...");
-      test(100,0);
+      test(100,50);
       System.out.println("main() ends...");
 	}
 
