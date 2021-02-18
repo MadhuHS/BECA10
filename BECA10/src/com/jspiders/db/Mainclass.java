@@ -6,5 +6,6 @@ public class Mainclass
 	{
         MySqlImp m1 = new MySqlImp();
         m1.intitDb();
+        m1.closeConnection();
 	}
 }

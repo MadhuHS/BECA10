@@ -25,9 +25,7 @@ public class MySqlImp implements Dao {
 		{
 			e.printStackTrace();
 		}
-		        
-		     
-		//Step5 : Close the connection        
+		              
 	  
 	}
 
@@ -78,4 +76,22 @@ public class MySqlImp implements Dao {
 
 	}
 
+	@Override
+	public void closeConnection() {
+		//Step5 : Close the connection  
+		try 
+		{
+			con.close();
+			System.out.println("connection closed");
+		} 
+		catch (SQLException e) 
+		{
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+	}
+
 }
+
+
+
