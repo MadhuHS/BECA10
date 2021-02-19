@@ -2,7 +2,9 @@ package com.jspiders.db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
+import java.sql.PreparedStatement;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MySqlImp implements Dao {
 
@@ -30,15 +32,32 @@ public class MySqlImp implements Dao {
 	}
 
 	@Override
-	public void addName(int id, String name) {
+	public void addName(int id, String name) throws SQLException {
 		/*
-		 Prepare the Statement(InsertSQL)
+		 Prepare the Statement(insertQuery)
 		 Execute Query
 		 Process the result*/
 		
-		System.out.println("adding name");
-		System.out.println(id);
-		System.out.println(name);
+		String insertQuery = 
+			"insert into users values("+id+","+"'"+name+"'"+");";
+		
+		String insertQuery2 = 
+				"insert into users values(?,?);";
+		System.out.println(insertQuery);
+		
+		/*Statement sm = con.createStatement();
+		sm.execute(insertQuery);*/
+		
+		
+		PreparedStatement pm = con.prepareStatement(insertQuery2);
+		pm.setInt(1, id);
+		pm.setString(2, name);
+		
+		pm.execute();
+		
+		
+		
+		System.out.println("data added to db");
 	}
 
 	@Override
