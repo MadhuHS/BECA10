@@ -3,8 +3,8 @@ package com.jspiders.db;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
-import java.sql.Statement;
 
 public class MySqlImp implements Dao {
 
@@ -61,7 +61,7 @@ public class MySqlImp implements Dao {
 	}
 
 	@Override
-	public String getName(int id) {
+	public String getName(int id) throws SQLException {
 		/*
 		Step2 : Prepare the Statement(SELECTSQL)
 		Step3 : Execute Query
@@ -69,11 +69,22 @@ public class MySqlImp implements Dao {
 		String name = "";
 		System.out.println("getting name");
 		System.out.println(id);
+		
+		String SelectQuery = "select name from users where id = ?";
+		
+		PreparedStatement pm = con.prepareStatement(SelectQuery);
+		pm.setInt(1, id);
+		ResultSet rs = pm.executeQuery();
+		
+		rs.next();//move cursor to first record
+		
+		name = rs.getString("name");//get the data from ResultSet with columnName
+		
 		return name;
 	}
 
 	@Override
-	public void updateName(int id, String newName) {
+	public void updateName(int id, String newName) throws SQLException {
 		/*
 		Step2 : Prepare the Statement(UPDATESQL)
 		Step3 : Execute Query
@@ -81,7 +92,16 @@ public class MySqlImp implements Dao {
 		System.out.println("updating name");
 		System.out.println(id);
 		System.out.println(newName);
-
+		
+		String UPDATEquery = "update users set name = ? where id = ?";
+		
+		PreparedStatement pm  = con.prepareStatement(UPDATEquery);
+		pm.setString(1, newName);
+		pm.setInt(2, id);
+		
+		int updateCount = pm.executeUpdate();
+	
+		System.out.println(updateCount +" rows updated");
 	}
 
 	@Override
