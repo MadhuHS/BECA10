@@ -1,6 +1,7 @@
 package com.jspiders.db;
 
 import java.sql.SQLException;
+import java.util.ArrayList;
 
 public interface Dao {
 
@@ -9,6 +10,8 @@ public interface Dao {
 	public void closeConnection();
 	
 	public String[] getAllNames()throws SQLException ;
+	
+	public ArrayList<String> getAllUserNames()throws SQLException ;
 
 	public void addName(int id, String name) throws SQLException;
 

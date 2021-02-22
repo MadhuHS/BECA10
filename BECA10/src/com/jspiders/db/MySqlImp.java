@@ -6,6 +6,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 
 public class MySqlImp implements Dao {
 
@@ -85,19 +86,46 @@ public class MySqlImp implements Dao {
 	}
 	
 	@Override
-	public String[] getAllNames() throws SQLException 
+	public ArrayList<String> getAllUserNames() throws SQLException
 	{
 		String selectAll = "select name from users";
 	    Statement sm = con.createStatement();
 	    ResultSet rs = sm.executeQuery(selectAll);
 	    
+	    ArrayList<String> userNames = new ArrayList<String>();
 	    while(rs.next())
 	    {
 	    	String s1 = rs.getString("name");
-	    	System.out.println(s1);
+	    	userNames.add(s1);
 	    }
 	    
-		return null;
+		return userNames;
+	}
+	
+	@Override
+	public String[] getAllNames() throws SQLException 
+	{
+		String selectAll = "select name from users";
+	    Statement sm = con.createStatement();
+	    ResultSet rs = sm.executeQuery(selectAll);
+	   	  
+	    int count = 0;
+	    while(rs.next())
+	    {
+	    	count++;
+	    }
+	    
+	    String[] userNames = new String[count];
+	    System.out.println(userNames.length);
+	    
+	    rs.first();
+	    for (int i = 0; i < userNames.length; i++) 
+	    {
+			userNames[i] = rs.getString("name");
+			rs.next();
+		}
+
+		return userNames;
 	}
 
 	@Override
@@ -146,6 +174,8 @@ public class MySqlImp implements Dao {
 			e.printStackTrace();
 		}
 	}
+
+	
 
 	
 
