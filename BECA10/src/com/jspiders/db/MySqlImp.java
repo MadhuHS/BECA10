@@ -91,14 +91,11 @@ public class MySqlImp implements Dao {
 	    Statement sm = con.createStatement();
 	    ResultSet rs = sm.executeQuery(selectAll);
 	    
-	    
-	    rs.next();
-	    String s1 =  rs.getString("name");
-	    System.out.println(s1);
-	    
-	    rs.next();
-	    String s2 =  rs.getString("name");
-	    System.out.println(s1);
+	    while(rs.next())
+	    {
+	    	String s1 = rs.getString("name");
+	    	System.out.println(s1);
+	    }
 	    
 		return null;
 	}
