@@ -5,6 +5,7 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 public class MySqlImp implements Dao {
 
@@ -82,6 +83,24 @@ public class MySqlImp implements Dao {
 		
 		return name;
 	}
+	
+	@Override
+	public String[] getAllNames() throws SQLException 
+	{
+		String selectAll = "select name from users";
+	    Statement sm = con.createStatement();
+	    ResultSet rs = sm.executeQuery(selectAll);
+	    
+	    rs.next();
+	    String s1 =  rs.getString("name");
+	    System.out.println(s1);
+	    
+	    rs.next();
+	    String s2 =  rs.getString("name");
+	    System.out.println(s1);
+	    
+		return null;
+	}
 
 	@Override
 	public void updateName(int id, String newName) throws SQLException {
@@ -129,6 +148,8 @@ public class MySqlImp implements Dao {
 			e.printStackTrace();
 		}
 	}
+
+	
 
 }
 

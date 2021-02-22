@@ -12,17 +12,7 @@ public class Mainclass
        
         try 
         {
-			//m1.addName(2,"user2");
-        	System.out.println("Before update");
-        	String s1 = m1.getName(1);
-			System.out.println(s1);
-			
-        	System.out.println("After update");
-			m1.updateName(1,"Martin");
-			String s2 = m1.getName(1);
-			System.out.println(s2);
-			
-			
+		  m1.getAllNames();		
 		} 
         catch (SQLException e) 
         {

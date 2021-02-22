@@ -7,6 +7,8 @@ public interface Dao {
 	public void intitDb();
 
 	public void closeConnection();
+	
+	public String[] getAllNames()throws SQLException ;
 
 	public void addName(int id, String name) throws SQLException;
 
