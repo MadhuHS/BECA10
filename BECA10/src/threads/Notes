@@ -106,8 +106,8 @@ Threads and MultiThreading
     
    * Calls to execute will reuse previously constructed threads if available. 
     
-   * If no existing thread is available, a new thread will be created and added
-     to the pool. 
+   * If no existing thread is available, a new thread will be created 
+     and added to the pool. 
      
    * Threads that have not been used for sixty seconds are 
      terminated and removed from the pool. 
@@ -167,9 +167,11 @@ Threads and MultiThreading
     
     
     Single thread executor
-    * A Thread pool that uses a single worker thread operating off an unbounded queue. 
+    * A Thread pool that uses a single worker 
+      thread operating off an unbounded queue. 
   
-    * If this single thread terminates due to a failure during execution prior to shutdown,
+    * If this single thread terminates due to a failure 
+      during execution prior to shutdown,
       a new one will take its place if needed to execute remaining tasks.
       
     * Tasks are guaranteed to execute sequentially, and no more than one task will be active at 
