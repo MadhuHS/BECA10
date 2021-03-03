@@ -234,19 +234,23 @@ Threads and MultiThreading
        of each other to complete the execution and wait for infinite period
        of time.
        
-     * Thread DeadLock can be overcome by using Inter Thread Communication(ITC)  
+     * Thread DeadLock can be overcome by using 
+       Inter Thread Communication(ITC)  
        
        
-       Inter Thread Communication(ITC) is achieved by using methods of Object class
+       Inter Thread Communication(ITC) is achieved by 
+       using methods of Object class
        
        wait()
        notify()
        notifyAll()
        
-     wait()      : It will pause the execution of the thread and also release all
+     wait()      : It will pause the execution of the thread 
+                   and also release all
                    the object locks held by the given thread.
        
-     notify()    : It will send the notification to the thread which is in wait state
+     notify()    : It will send the notification to the thread which 
+                   is in wait state
                    to resume its execution.
        
      notifyAll() : It will send the notification to all threads which are in wait state
